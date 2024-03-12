@@ -4,12 +4,26 @@ from mammals import Mammals
 
 
 class Artiodactyla(Mammals):
-    def __init__(self, mammary_glands, hair_fur, warm_bloodedness, viviparity, middle_ear_bones, sexual_dimorphism, even_toed_ungulates, herbivorous_diet, digestive_system):
+    def __init__(
+            self, 
+            mammary_glands, 
+            hair_fur, 
+            warm_bloodedness, 
+            viviparity, 
+            middle_ear_bones, 
+            sexual_dimorphism, 
+            even_toed_ungulates, 
+            herbivorous_diet, 
+            digestive_system,
+            representative=None):
         super().__init__(mammary_glands, hair_fur, warm_bloodedness, viviparity, middle_ear_bones, sexual_dimorphism)
         self.even_toed_ungulates = even_toed_ungulates
         self.herbivorous_diet = herbivorous_diet
         self.digestive_system = digestive_system
-        self.representative = random.choice(['Deer', 'Cow', 'Pig','Giraffe'])
+        if representative is None:
+            self.representative = random.choice(['Mouse', 'Cow', 'Pig','Giraffe'])
+        else:
+            self.representative = representative
 
     def graze(self):
         pass
@@ -29,12 +43,14 @@ class Artiodactyla(Mammals):
             print(f"{predator.representative} is not dangerous for the {self.representative}.")
 
 def main():
-    dear = Artiodactyla(True, True, True, True, True, True, True, True, True)
-    print(dear.representative)
-    dear.become_prey(Carnivora(True, True, True, True, True, True, True, True, True, True))
-    print(dear.graze())
-    print(dear.ruminate())
-    print(dear.migrate())
+    deer = Artiodactyla(True, True, True, True, True, True, True, True, True, "Deer")
+    artiodactyl = Artiodactyla(True, True, True, True, True, True, True, True, True)
+    print(artiodactyl.representative)
+    print(deer.representative)
+    deer.become_prey(Carnivora(True, True, True, True, True, True, True, True, True, True))
+    print(deer.graze())
+    print(deer.ruminate())
+    print(deer.migrate())
 
 if __name__ == "__main__":
     main()

@@ -55,11 +55,11 @@ def main():
     from carnivora import Carnivora 
     orangutan = Primates(True, True, True, True, True, True, True, True, True, "Orangutan")
     primate = Primates(True, True, True, True, True, True, True, True, True)
-    rat = Rodentia(True, True, True, True, True, True, True, True)
-    lion = Carnivora(True, True, True, True, True, True, True, True, True, True)
+    rat = Rodentia(True, True, True, True, True, True, True, True, "Rat")
+    carnivore = Carnivora(True, True, True, True, True, True, True, True, True, True)
     orangutan.become_prey(rat)  # orangutan does not become prey for rat
     primate.become_prey(rat)  # random primate does not become prey for rat
-    orangutan.become_prey(lion)  # Monkey becomes prey for lion
+    orangutan.become_prey(carnivore)  # Monkey becomes prey for random carnivore
     print(orangutan.representative)
     print(primate.representative)
 
