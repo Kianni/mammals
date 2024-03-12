@@ -1,4 +1,5 @@
 import random
+from carnivora import Carnivora
 from mammals import Mammals
 
 
@@ -18,6 +19,14 @@ class Artiodactyla(Mammals):
 
     def migrate(self):
         pass
+
+    def become_prey(self, predator):
+        from carnivora import Carnivora
+        if isinstance(predator, Carnivora):
+            # code to simulate becoming prey
+            print(f"The {self.representative} has become prey for a {predator.representative}.")
+        else:
+            print(f"This animal is not dangerous for the {self.representative}.")
 
 def main():
     dear = Artiodactyla(True, True, True, True, True, True, True, True, True, "Dear")

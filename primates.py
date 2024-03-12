@@ -1,4 +1,6 @@
+# from carnivora import Carnivora
 from mammals import Mammals
+# from rodentia import Rodentia
 
 
 class Primates(Mammals):
@@ -18,8 +20,22 @@ class Primates(Mammals):
     def arborealMovement(self):
         pass
 
+    def become_prey(self, predator):
+        from carnivora import Carnivora
+        if isinstance(predator, Carnivora):
+            # code to simulate becoming prey
+            print(f"The {self.representative} has become prey for a {predator.representative}.")
+        else:
+            print(f"This animal is not dangerous for the {self.representative}.")
+
 def main():
+    from rodentia import Rodentia
+    from carnivora import Carnivora 
     monkey = Primates(True, True, True, True, True, True, True, True, True, "Monkey")
+    rat = Rodentia(True, True, True, True, True, True, True, True, "Rat")
+    lion = Carnivora(True, True, True, True, True, True, True, True, True, True, "Lion")
+    monkey.become_prey(rat)  # Monkey does not become prey for rat
+    monkey.become_prey(lion)  # Monkey becomes prey for lion
     print(monkey.representative)
     print(monkey.socialize())
     print(monkey.toolUse())

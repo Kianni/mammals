@@ -1,7 +1,7 @@
 import random
-from artiodactyla import Artiodactyla
+# from artiodactyla import Artiodactyla
 from mammals import Mammals
-from primates import Primates
+# from primates import Primates
 from rodentia import Rodentia
 
 
@@ -21,6 +21,8 @@ class Carnivora(Mammals):
         pass
 
     def hunt(self, prey):
+        from artiodactyla import Artiodactyla
+        from primates import Primates
         if isinstance(prey, (Primates, Artiodactyla)):
             # code to simulate hunting behaviour
             print(f"For {self.representative} a {prey.representative} was tasty and nutricious.")
@@ -29,6 +31,9 @@ class Carnivora(Mammals):
             print("This prey is not valid for Carnivora.")
 
 def main():
+    from artiodactyla import Artiodactyla
+    from primates import Primates
+    
     lion = Carnivora(True, True, True, True, True, True, True, True, True, True, "Lion")
     chimp = Primates(True, True, True, True, True, True, True, True, True, "Chimpanzee")
     deer = Artiodactyla(True, True, True, True, True, True, True, True, True, "Deer")
