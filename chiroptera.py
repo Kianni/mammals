@@ -17,3 +17,13 @@ class Chiroptera(Mammals):
 
     def groom(self):
         pass
+
+def main():
+    bat = Chiroptera(True, True, True, True, True, True, True, True, True, "Vampire Bat")
+    print(bat.representative)
+    print(bat.echolocate())
+    print(bat.roost())
+    print(bat.groom())
+
+if __name__ == "__main__":
+    main()

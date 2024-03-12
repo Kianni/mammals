@@ -17,3 +17,13 @@ class Artiodactyla(Mammals):
 
     def migrate(self):
         pass
+
+def main():
+    dear = Artiodactyla(True, True, True, True, True, True, True, True, True, "Dear")
+    print(dear.representative)
+    print(dear.graze())
+    print(dear.ruminate())
+    print(dear.migrate())
+
+if __name__ == "__main__":
+    main()

@@ -18,3 +18,13 @@ class Carnivora(Mammals):
 
     def hunt(self):
         pass
+
+def main():
+    lion = Carnivora(True, True, True, True, True, True, True, True, True, True, "Lion")
+    print(lion.representative)
+    print(lion.hunt())
+    print(lion.consumePrey())
+    print(lion.communicate())
+
+if __name__ == "__main__":
+    main()

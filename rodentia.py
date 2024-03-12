@@ -16,3 +16,13 @@ class Rodentia(Mammals):
 
     def hoardFood(self):
         pass
+
+def main():
+    mouse = Rodentia(True, True, True, True, True, True, True, True, "Mouse")
+    print(mouse.representative)
+    print(mouse.gnaw())
+    print(mouse.burrow())
+    print(mouse.hoardFood())
+
+if __name__ == "__main__":
+    main()

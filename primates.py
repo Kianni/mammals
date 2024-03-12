@@ -17,3 +17,13 @@ class Primates(Mammals):
 
     def arborealMovement(self):
         pass
+
+def main():
+    monkey = Primates(True, True, True, True, True, True, True, True, True, "Monkey")
+    print(monkey.representative)
+    print(monkey.socialize())
+    print(monkey.toolUse())
+    print(monkey.arborealMovement())
+
+if __name__ == "__main__":
+    main()
