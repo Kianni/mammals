@@ -1,15 +1,16 @@
 # from carnivora import Carnivora
+import random
 from mammals import Mammals
 # from rodentia import Rodentia
 
 
 class Primates(Mammals):
-    def __init__(self, mammary_glands, hair_fur, warm_bloodedness, viviparity, middle_ear_bones, sexual_dimorphism, developed_brain, social_behaviour, opposite_thumb, representative):
+    def __init__(self, mammary_glands, hair_fur, warm_bloodedness, viviparity, middle_ear_bones, sexual_dimorphism, developed_brain, social_behaviour, opposite_thumb):
         super().__init__(mammary_glands, hair_fur, warm_bloodedness, viviparity, middle_ear_bones, sexual_dimorphism)
         self.developed_brain = developed_brain
         self.social_behaviour = social_behaviour
         self.opposite_thumb = opposite_thumb
-        self.representative = 'Monkey'
+        self.representative = random.choice(['Monkey', 'Gorilla', 'Chimpanzee'])
 
     def socialize(self):
         pass
@@ -26,14 +27,14 @@ class Primates(Mammals):
             # code to simulate becoming prey
             print(f"The {self.representative} has become prey for a {predator.representative}.")
         else:
-            print(f"This animal is not dangerous for the {self.representative}.")
+            print(f"{predator.representative} is not dangerous for the {self.representative}.")
 
 def main():
     from rodentia import Rodentia
     from carnivora import Carnivora 
-    monkey = Primates(True, True, True, True, True, True, True, True, True, "Monkey")
-    rat = Rodentia(True, True, True, True, True, True, True, True, "Rat")
-    lion = Carnivora(True, True, True, True, True, True, True, True, True, True, "Lion")
+    monkey = Primates(True, True, True, True, True, True, True, True, True)
+    rat = Rodentia(True, True, True, True, True, True, True, True)
+    lion = Carnivora(True, True, True, True, True, True, True, True, True, True)
     monkey.become_prey(rat)  # Monkey does not become prey for rat
     monkey.become_prey(lion)  # Monkey becomes prey for lion
     print(monkey.representative)

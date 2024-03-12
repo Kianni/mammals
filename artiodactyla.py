@@ -4,7 +4,7 @@ from mammals import Mammals
 
 
 class Artiodactyla(Mammals):
-    def __init__(self, mammary_glands, hair_fur, warm_bloodedness, viviparity, middle_ear_bones, sexual_dimorphism, even_toed_ungulates, herbivorous_diet, digestive_system, representative):
+    def __init__(self, mammary_glands, hair_fur, warm_bloodedness, viviparity, middle_ear_bones, sexual_dimorphism, even_toed_ungulates, herbivorous_diet, digestive_system):
         super().__init__(mammary_glands, hair_fur, warm_bloodedness, viviparity, middle_ear_bones, sexual_dimorphism)
         self.even_toed_ungulates = even_toed_ungulates
         self.herbivorous_diet = herbivorous_diet
@@ -26,11 +26,12 @@ class Artiodactyla(Mammals):
             # code to simulate becoming prey
             print(f"The {self.representative} has become prey for a {predator.representative}.")
         else:
-            print(f"This animal is not dangerous for the {self.representative}.")
+            print(f"{predator.representative} is not dangerous for the {self.representative}.")
 
 def main():
-    dear = Artiodactyla(True, True, True, True, True, True, True, True, True, "Dear")
+    dear = Artiodactyla(True, True, True, True, True, True, True, True, True)
     print(dear.representative)
+    dear.become_prey(Carnivora(True, True, True, True, True, True, True, True, True, True))
     print(dear.graze())
     print(dear.ruminate())
     print(dear.migrate())
