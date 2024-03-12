@@ -7,7 +7,7 @@ class Artiodactyla(Mammals):
         self.even_toed_ungulates = even_toed_ungulates
         self.herbivorous_diet = herbivorous_diet
         self.digestive_system = digestive_system
-        self.representative = representative
+        self.representative = 'Dear' 
 
     def graze(self):
         pass
