@@ -3,7 +3,7 @@ from mammals import Mammals
 
 
 class Rodentia(Mammals):
-    def __init__(self, mammary_glands, hair_fur, warm_bloodedness, viviparity, middle_ear_bones, sexual_dimorphism, continuously_growing_incissors, high_reproduction_rate, representative):
+    def __init__(self, mammary_glands, hair_fur, warm_bloodedness, viviparity, middle_ear_bones, sexual_dimorphism, continuously_growing_incissors, high_reproduction_rate):
         super().__init__(mammary_glands, hair_fur, warm_bloodedness, viviparity, middle_ear_bones, sexual_dimorphism)
         self.continuously_growing_incissors = continuously_growing_incissors
         self.high_reproduction_rate = high_reproduction_rate
@@ -19,7 +19,7 @@ class Rodentia(Mammals):
         pass
 
 def main():
-    mouse = Rodentia(True, True, True, True, True, True, True, True, "Mouse")
+    mouse = Rodentia(True, True, True, True, True, True, True, True)
     print(mouse.representative)
     print(mouse.gnaw())
     print(mouse.burrow())
