@@ -5,12 +5,33 @@ from mammals import Mammals
 
 
 class Primates(Mammals):
-    def __init__(self, mammary_glands, hair_fur, warm_bloodedness, viviparity, middle_ear_bones, sexual_dimorphism, developed_brain, social_behaviour, opposite_thumb):
-        super().__init__(mammary_glands, hair_fur, warm_bloodedness, viviparity, middle_ear_bones, sexual_dimorphism)
+    def __init__(
+            self, 
+            mammary_glands, 
+            hair_fur, 
+            warm_bloodedness, 
+            viviparity, 
+            middle_ear_bones, 
+            sexual_dimorphism, 
+            developed_brain, 
+            social_behaviour, 
+            opposite_thumb,
+            representative=None
+            ):
+        super().__init__(
+            mammary_glands, 
+            hair_fur, 
+            warm_bloodedness, 
+            viviparity, 
+            middle_ear_bones, 
+            sexual_dimorphism)
         self.developed_brain = developed_brain
         self.social_behaviour = social_behaviour
         self.opposite_thumb = opposite_thumb
-        self.representative = random.choice(['Monkey', 'Gorilla', 'Chimpanzee'])
+        if representative is None:
+            self.representative = random.choice(['Monkey', 'Gorilla', 'Chimpanzee'])
+        else:
+            self.representative = representative
 
     def socialize(self):
         pass
@@ -32,15 +53,19 @@ class Primates(Mammals):
 def main():
     from rodentia import Rodentia
     from carnivora import Carnivora 
-    monkey = Primates(True, True, True, True, True, True, True, True, True)
+    orangutan = Primates(True, True, True, True, True, True, True, True, True, "Orangutan")
+    primate = Primates(True, True, True, True, True, True, True, True, True)
     rat = Rodentia(True, True, True, True, True, True, True, True)
     lion = Carnivora(True, True, True, True, True, True, True, True, True, True)
-    monkey.become_prey(rat)  # Monkey does not become prey for rat
-    monkey.become_prey(lion)  # Monkey becomes prey for lion
-    print(monkey.representative)
-    print(monkey.socialize())
-    print(monkey.toolUse())
-    print(monkey.arborealMovement())
+    orangutan.become_prey(rat)  # orangutan does not become prey for rat
+    primate.become_prey(rat)  # random primate does not become prey for rat
+    orangutan.become_prey(lion)  # Monkey becomes prey for lion
+    print(orangutan.representative)
+    print(primate.representative)
+
+    print(orangutan.socialize())
+    print(orangutan.toolUse())
+    print(orangutan.arborealMovement())
 
 if __name__ == "__main__":
     main()
