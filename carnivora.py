@@ -1,4 +1,8 @@
+import random
+from artiodactyla import Artiodactyla
 from mammals import Mammals
+from primates import Primates
+from rodentia import Rodentia
 
 
 class Carnivora(Mammals):
@@ -8,7 +12,7 @@ class Carnivora(Mammals):
         self.good_sight = good_sight
         self.smell = smell
         self.limbs_to_pursuit_prey = limbs_to_pursuit_prey
-        self.representative = "Lion" | "Wolf"
+        self.representative = random.choice(["Lion", "Wolf"])
 
     def consumePrey(self):
         pass
@@ -16,13 +20,23 @@ class Carnivora(Mammals):
     def communicate(self):
         pass
 
-    def hunt(self):
-        pass
+    def hunt(self, prey):
+        if isinstance(prey, (Primates, Artiodactyla)):
+            # code to simulate hunting behaviour
+            print(f"For {self.representative} a {prey.representative} was tasty and nutricious.")
+            pass
+        else:
+            print("This prey is not valid for Carnivora.")
 
 def main():
     lion = Carnivora(True, True, True, True, True, True, True, True, True, True, "Lion")
+    chimp = Primates(True, True, True, True, True, True, True, True, True, "Chimpanzee")
+    deer = Artiodactyla(True, True, True, True, True, True, True, True, True, "Deer")
+    rat = Rodentia(True, True, True, True, True, True, True, True, "Rat")
     print(lion.representative)
-    print(lion.hunt())
+    lion.hunt(chimp)  # Lion hunts chimp
+    lion.hunt(deer)  # Lion hunts deer
+    lion.hunt(rat)  # Lion does not hunt rat
     print(lion.consumePrey())
     print(lion.communicate())
 

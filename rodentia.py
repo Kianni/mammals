@@ -1,3 +1,4 @@
+import random
 from mammals import Mammals
 
 
@@ -6,7 +7,7 @@ class Rodentia(Mammals):
         super().__init__(mammary_glands, hair_fur, warm_bloodedness, viviparity, middle_ear_bones, sexual_dimorphism)
         self.continuously_growing_incissors = continuously_growing_incissors
         self.high_reproduction_rate = high_reproduction_rate
-        self.representative = "Mouse" | "Squirrel" | "Beaver"
+        self.representative = random.choice(["Mouse", "Squirrel", "Beaver"])
 
     def gnaw(self):
         pass
