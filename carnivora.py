@@ -25,10 +25,16 @@ class Carnivora(Mammals):
         self.good_sight = good_sight
         self.smell = smell
         self.limbs_to_pursuit_prey = limbs_to_pursuit_prey
+        self.data_api = self.get_API_data('Carnivora')
+        self.representative = self.get_representative(representative)
+        self.url_wiki = self.data_api[1] or "https://en.wikipedia.org/wiki/Carnivora"
+
+    def get_representative(self, representative):
         if representative is None:
-            self.representative = random.choice(["Wolf", "Tiger", "Leopard", "Jaguar", "Cheetah", "Hyena", "Fox", "Bear"])
-        else:
-            self.representative = representative
+            representative = self.data_api[0]
+            if representative is None:
+                representative = random.choice(["Wolf", "Tiger", "Leopard", "Jaguar", "Cheetah", "Hyena", "Fox", "Bear"])
+        return representative
 
     def consumePrey(self):
         pass
@@ -63,6 +69,10 @@ def main():
     lion.hunt(rat)  # Lion does not hunt rat
     print(lion.consumePrey())
     print(lion.communicate())
+
+    random_carnivore = Carnivora(True, True, True, True, True, True, True, True, True, True)
+    print(random_carnivore.representative)
+    print(random_carnivore.url_wiki)
 
 if __name__ == "__main__":
     main()
