@@ -29,7 +29,7 @@ class Primates(Mammals):
         self.developed_brain = developed_brain
         self.social_behaviour = social_behaviour
         self.opposite_thumb = opposite_thumb
-        self.data_api = self.get_API_data()
+        self.data_api = self.get_API_data('Primates')
         self.representative = self.get_representative(representative)
         self.url_wiki = self.data_api[1] or "https://en.wikipedia.org/wiki/Primates"
     
@@ -39,10 +39,6 @@ class Primates(Mammals):
             if representative is None:
                 representative = random.choice(['Monkey', 'Gorilla', 'Chimpanzee'])
         return representative
-
-    def get_API_data(self):
-        species, wiki_url = Taxon('Primates').get_species_and_url()
-        return [species, wiki_url]
 
     def socialize(self):
         pass

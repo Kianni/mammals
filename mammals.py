@@ -1,3 +1,6 @@
+from mammalsAPI import Taxon
+
+
 class Mammals:
     def __init__(self, mammary_glands, hair_fur, warm_bloodedness, viviparity, middle_ear_bones, sexual_dimorphism):
         self.mammary_glands = mammary_glands
@@ -27,6 +30,10 @@ class Mammals:
 
     def set_parental_care_form(self, care):
         self.parental_care = care
+    
+    def get_API_data(self, taxon_name):
+        species, wiki_url = Taxon(taxon_name).get_species_and_url()
+        return [species, wiki_url]
 
 def main():
     # Create an object of the Mammals class
