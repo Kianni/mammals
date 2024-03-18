@@ -34,7 +34,7 @@ class Taxon:
         if self.taxon_id:
             data = self.get_random_obj_by_taxon_id()
             if data:
-                species = data['species_guess'] or self.taxon_name
+                species = data['species_guess']
                 wikipedia_url = self.get_wikipedia_url(data['taxon']['id']) or 'No Wikipedia URL found'
                 return species, wikipedia_url
             else:

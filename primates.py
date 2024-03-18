@@ -2,6 +2,7 @@
 import random
 from mammals import Mammals
 # from rodentia import Rodentia
+from mammalsAPI import Taxon
 
 
 class Primates(Mammals):
@@ -28,10 +29,20 @@ class Primates(Mammals):
         self.developed_brain = developed_brain
         self.social_behaviour = social_behaviour
         self.opposite_thumb = opposite_thumb
+        self.data_api = self.get_API_data()
+        self.representative = self.get_representative(representative)
+        self.url_wiki = self.data_api[1] or "https://en.wikipedia.org/wiki/Primates"
+    
+    def get_representative(self, representative):
         if representative is None:
-            self.representative = random.choice(['Monkey', 'Gorilla', 'Chimpanzee'])
-        else:
-            self.representative = representative
+            representative = self.data_api[0]
+            if representative is None:
+                representative = random.choice(['Monkey', 'Gorilla', 'Chimpanzee'])
+        return representative
+
+    def get_API_data(self):
+        species, wiki_url = Taxon('Primates').get_species_and_url()
+        return [species, wiki_url]
 
     def socialize(self):
         pass
@@ -66,6 +77,12 @@ def main():
     print(orangutan.socialize())
     print(orangutan.toolUse())
     print(orangutan.arborealMovement())
+
+    # test API data
+    random_primate_api = Primates(True, True, True, True, True, True, True, True, True)
+    print(random_primate_api.data_api)
+    print(random_primate_api.representative)
+    print(random_primate_api.url_wiki)
 
 if __name__ == "__main__":
     main()
