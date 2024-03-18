@@ -43,10 +43,30 @@ class Taxon:
             return None, None
 
 def main():
-    taxon = Taxon('Primates')
-    species, url = taxon.get_species_and_url()
-    print(f"Species: {species}")
-    print(f"Wikipedia URL: {url}")
+    primate = Taxon('Primates')
+    p_species, p_url = primate.get_species_and_url()
+    print(f"Species: {p_species}")
+    print(f"Wikipedia URL: {p_url}")
+
+    rodentia = Taxon('Rodentia')
+    r_species, r_url = rodentia.get_species_and_url()
+    print(f"Species: {r_species}")
+    print(f"Wikipedia URL: {r_url}")
+
+    artiodactyla = Taxon('Artiodactyla')
+    a_species, a_url = artiodactyla.get_species_and_url()
+    print(f"Species: {a_species}")
+    print(f"Wikipedia URL: {a_url}")
+
+    carnivora = Taxon('Carnivora')
+    c_species, c_url = carnivora.get_species_and_url()
+    print(f"Species: {c_species}")
+    print(f"Wikipedia URL: {c_url}")
+
+    chiroptera = Taxon('Chiroptera')
+    ch_species, ch_url = chiroptera.get_species_and_url()
+    print(f"Species: {ch_species}")
+    print(f"Wikipedia URL: {ch_url}")
     
 if __name__ == '__main__':
     main()
