@@ -51,7 +51,13 @@ class Artiodactyla(Mammals):
         else:
             self.migrate()
 
-    
+    def encounter_with_a_mate(self, mate):
+        if self.state == 'grazing' and isinstance(mate, Artiodactyla) and mate.mammary_glands == 'well developed':
+            self._change_state('reproduction')
+            num = random.randint(1, 3)
+            super().numberOfChildren(num)
+            print(f"{mate.representative} gave birth to {num} offsprings.")
+            self._change_state('grazing')
 
     def ruminate(self):
         pass
