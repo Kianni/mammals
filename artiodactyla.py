@@ -24,15 +24,26 @@ class Artiodactyla(Mammals):
             self.representative = random.choice(['Mouse', 'Cow', 'Pig','Giraffe'])
         else:
             self.representative = representative
+        # mark the birth of the animal
+        print(f"{self.representative} is born!")
+
 
     def graze(self):
-        pass
+        print(f"{self.representative} is grazing.")
+
+    def migrate(self):
+        print(f"{self.representative} is moving towards better pastures...")
+
+    # make decision migration or grazing based on pasture condition
+    def migrate_if_bad_pasture(self, pasture=True):
+        if pasture:
+            self.graze()
+        else:
+            self.migrate()
 
     def ruminate(self):
         pass
 
-    def migrate(self):
-        pass
 
     def become_prey(self, predator):
         from carnivora import Carnivora
