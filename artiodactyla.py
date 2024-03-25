@@ -65,6 +65,7 @@ class Artiodactyla(Mammals):
     def ruminate(self):
         pass
 
+    # threatened by a predator
     def approach_by_predator(self, predator):
         num = random.randint(1, 10)
         if self.state == 'grazing':
