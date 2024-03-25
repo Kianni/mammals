@@ -55,13 +55,25 @@ class Artiodactyla(Mammals):
     def encounter_with_a_mate(self, mate):
         if self.state == 'grazing' and isinstance(mate, Artiodactyla) and mate.mammary_glands == 'well developed':
             self._change_state('reproduction')
+            mate._change_state('reproduction')
             num = random.randint(1, 3)
             super().numberOfChildren(num)
             print(f"{mate.representative} gave birth to {num} offsprings.")
             self._change_state('grazing')
+            mate._change_state('grazing')
 
     def ruminate(self):
         pass
+
+    def approach_by_predator(self, predator):
+        num = random.randint(1, 10)
+        if self.state == 'grazing':
+            if num % 2 == 0:
+                print(f"{self.representative} successful escape from {predator.representative}.")
+                self._change_state('grazing')
+            else:
+                print(f"{self.representative} was caught by {predator.representative}.")
+                self.become_prey(predator)
 
 
     def become_prey(self, predator):
@@ -70,6 +82,7 @@ class Artiodactyla(Mammals):
         if isinstance(predator, Carnivora):
             # code to simulate becoming prey
             print(f"The {self.representative} has become prey for a {predator.representative}.")
+            self._change_state('death')
         else:
             print(f"{predator.representative} is not dangerous for the {self.representative}.")
 

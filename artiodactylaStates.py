@@ -18,7 +18,13 @@ def main():
     deer_male.migrate_if_no_pasture(PastureCondition.APPEARANCE_OF_GOOD_PASTURE.value)
     
     # grazing -> reproduction -> grazing
+    deer_female.check_and_graze(PastureCondition.APPEARANCE_OF_GOOD_PASTURE.value)
     deer_male.encounter_with_a_mate(deer_female)
+
+    # grazing -> threatened -> [ death / grazing ]
+    lion = Carnivora(True, True, True, True, True, True, True, True, True, True, "Lion")
+    deer_male.approach_by_predator(lion)
+    deer_female.approach_by_predator(lion)
 
     # grazing -> migration
     deer_male.migrate_if_no_pasture(PastureCondition.LACK_OF_PASTURE.value)
