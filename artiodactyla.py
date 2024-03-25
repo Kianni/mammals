@@ -20,13 +20,13 @@ class Artiodactyla(Mammals):
         self.even_toed_ungulates = even_toed_ungulates
         self.herbivorous_diet = herbivorous_diet
         self.digestive_system = digestive_system
-        self.state = "born"
+        self.state = ""
         if representative is None:
             self.representative = random.choice(['Mouse', 'Cow', 'Pig','Giraffe'])
         else:
             self.representative = representative
         # mark the birth of the animal
-        self._change_state('born')
+        self._change_state('birth')
 
 
     def _change_state(self, new_state):
@@ -41,7 +41,7 @@ class Artiodactyla(Mammals):
 
     # youngsters graze when good pasture appears
     def check_and_graze(self, pasture):
-        if self.state == 'born' and pasture == True:
+        if self.state == 'birth' and pasture == True:
             self.graze()
 
     # proceed grazing or migrate beacuse of lack of pasture
