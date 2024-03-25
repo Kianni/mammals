@@ -51,6 +51,7 @@ class Artiodactyla(Mammals):
         else:
             self.migrate()
 
+    # reproduction
     def encounter_with_a_mate(self, mate):
         if self.state == 'grazing' and isinstance(mate, Artiodactyla) and mate.mammary_glands == 'well developed':
             self._change_state('reproduction')
