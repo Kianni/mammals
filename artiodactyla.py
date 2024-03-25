@@ -39,10 +39,15 @@ class Artiodactyla(Mammals):
     def migrate(self):
         self._change_state('migrating')
 
-    # make decision migration or grazing based on pasture condition
-    def migrate_if_bad_pasture(self, pasture=True):
-        if pasture:
+    # youngsters graze when good pasture appears
+    def check_and_graze(self, pasture):
+        if self.state == 'born' and pasture == True:
             self.graze()
+
+    # proceed grazing or migrate beacuse of lack of pasture
+    def migrate_if_no_pasture(self, pasture=False):
+        if pasture:
+            self.graze() # the arrow from grazing to grazing is not shown in the diagram
         else:
             self.migrate()
 

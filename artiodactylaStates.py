@@ -9,8 +9,9 @@ def main():
         APPEARANCE_OF_GOOD_PASTURE = True
         LACK_OF_PASTURE = False
 
-    deer.migrate_if_bad_pasture(PastureCondition.APPEARANCE_OF_GOOD_PASTURE.value)
-    deer.migrate_if_bad_pasture(PastureCondition.LACK_OF_PASTURE.value)
+    deer.check_and_graze(PastureCondition.APPEARANCE_OF_GOOD_PASTURE.value)
+    deer.migrate_if_no_pasture(PastureCondition.APPEARANCE_OF_GOOD_PASTURE.value)
+    deer.migrate_if_no_pasture(PastureCondition.LACK_OF_PASTURE.value)
 
 
 if __name__ == "__main__":
