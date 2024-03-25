@@ -21,6 +21,7 @@ class Artiodactyla(Mammals):
         self.herbivorous_diet = herbivorous_diet
         self.digestive_system = digestive_system
         self.state = ""
+        self.offspring = []
         if representative is None:
             self.representative = random.choice(['Mouse', 'Cow', 'Pig','Giraffe'])
         else:
@@ -58,7 +59,13 @@ class Artiodactyla(Mammals):
             mate._change_state('reproduction')
             num = random.randint(1, 3)
             super().numberOfChildren(num)
+            for i in range(num):
+                offspring = Artiodactyla("vestigial", True, True, True, True, True, True, True, True, "Deer") 
+                offspring.representative = f"Deer Jr {i+1}"
+                self.offspring.append(offspring)
             print(f"{mate.representative} gave birth to {num} offsprings.")
+            for offspring in self.offspring:
+                print(f"{offspring.representative} was born.")
             self._change_state('grazing')
             mate._change_state('grazing')
 
@@ -86,6 +93,18 @@ class Artiodactyla(Mammals):
             self._change_state('death')
         else:
             print(f"{predator.representative} is not dangerous for the {self.representative}.")
+
+    # become sick and either recover or die
+    def become_sick(self):
+        print(f"{self.representative} is sick.")
+        if self.state == 'grazing':
+            self._change_state('not healthy')
+            num = random.randint(1, 100)
+            if num % 3 == 0 or num % 2 == 0:
+                self._change_state('recovered')
+                self.graze()
+            else:
+                self._change_state('death')
 
 def main():
     deer = Artiodactyla(True, True, True, True, True, True, True, True, True, "Deer")
