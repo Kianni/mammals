@@ -20,19 +20,24 @@ class Artiodactyla(Mammals):
         self.even_toed_ungulates = even_toed_ungulates
         self.herbivorous_diet = herbivorous_diet
         self.digestive_system = digestive_system
+        self.state = "born"
         if representative is None:
             self.representative = random.choice(['Mouse', 'Cow', 'Pig','Giraffe'])
         else:
             self.representative = representative
         # mark the birth of the animal
-        print(f"{self.representative} is born!")
+        self._change_state('born')
 
+
+    def _change_state(self, new_state):
+        self.state = new_state
+        print(f"{self.representative} {self.state}")
 
     def graze(self):
-        print(f"{self.representative} is grazing.")
+        self._change_state('grazing')
 
     def migrate(self):
-        print(f"{self.representative} is moving towards better pastures...")
+        self._change_state('migrating')
 
     # make decision migration or grazing based on pasture condition
     def migrate_if_bad_pasture(self, pasture=True):
@@ -41,11 +46,14 @@ class Artiodactyla(Mammals):
         else:
             self.migrate()
 
+    
+
     def ruminate(self):
         pass
 
 
     def become_prey(self, predator):
+        self.state = 'prey'
         from carnivora import Carnivora
         if isinstance(predator, Carnivora):
             # code to simulate becoming prey
