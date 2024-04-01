@@ -18,10 +18,14 @@ def main():
     deer_male.migrate_if_no_pasture(PastureCondition.LACK_OF_PASTURE.value)
     # after finding good pasture, the deer will graze again
 
+    # flowchart: approuching by the predator and maybe survive
     lion = Carnivora(True, True, True, True, True, True, True, True, True, True, "Lion")
     deer_male.approach_by_predator(lion)
-    if deer.state == 'death':
-        del deer
+    if deer_male.state == 'death':
+        del deer_male
+    # flowchart: become sick and maybe recover after that 
+    else:
+        deer_male.become_sick()
 
 
 if __name__ == "__main__":
