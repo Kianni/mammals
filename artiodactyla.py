@@ -1,9 +1,50 @@
 import random
 from carnivora import Carnivora
 from mammals import Mammals
+from abc import ABC, abstractmethod
 
+class IArtiodactyla(ABC):
+    @abstractmethod
+    def _change_state(self, new_state):
+        pass
 
-class Artiodactyla(Mammals):
+    @abstractmethod
+    def graze(self):
+        pass
+
+    @abstractmethod
+    def migrate(self):
+        pass
+
+    @abstractmethod
+    def check_and_graze(self, pasture):
+        pass
+
+    @abstractmethod
+    def migrate_if_no_pasture(self, pasture=False):
+        pass
+
+    @abstractmethod
+    def encounter_with_a_mate(self, mate):
+        pass
+
+    @abstractmethod
+    def ruminate(self):
+        pass
+
+    @abstractmethod
+    def approach_by_predator(self, predator):
+        pass
+
+    @abstractmethod
+    def become_prey(self, predator):
+        pass
+
+    @abstractmethod
+    def become_sick(self):
+        pass
+
+class Artiodactyla(Mammals, IArtiodactyla):
     def __init__(
             self, 
             mammary_glands, 
@@ -16,6 +57,21 @@ class Artiodactyla(Mammals):
             herbivorous_diet, 
             digestive_system,
             representative=None):
+        
+        self.error_notification = ""
+        try:
+            # validate the arguments
+            if mammary_glands not in ['vestigial', 'well developed']:
+                raise ValueError("mammary_glands must be a string and must be either 'vestigial' or 'well developed'")
+
+            # if all arguments are valid, set the attributes
+            self.mammary_glands = mammary_glands
+            # set the other attributes
+        except ValueError as e:
+            print(e, "\nPlease provide valid values for the arguments.")
+            self.error_notification = " ERROR"
+
+
         super().__init__(mammary_glands, hair_fur, warm_bloodedness, viviparity, middle_ear_bones, sexual_dimorphism)
         self.even_toed_ungulates = even_toed_ungulates
         self.herbivorous_diet = herbivorous_diet
@@ -23,9 +79,9 @@ class Artiodactyla(Mammals):
         self.state = ""
         self.offspring = []
         if representative is None:
-            self.representative = random.choice(['Mouse', 'Cow', 'Pig','Giraffe'])
+            self.representative = random.choice(['Mouse', 'Cow', 'Pig','Giraffe']) + self.error_notification
         else:
-            self.representative = representative
+            self.representative = representative + self.error_notification
         # mark the birth of the animal
         self._change_state('birth')
 
