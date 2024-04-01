@@ -95,6 +95,8 @@ class Artiodactyla(Mammals, IArtiodactyla):
 
     def migrate(self):
         self._change_state('migrating')
+        # after migrating, the animal will graze again
+        self._change_state('grazing')
 
     # youngsters graze when good pasture appears
     def check_and_graze(self, pasture):
@@ -133,7 +135,7 @@ class Artiodactyla(Mammals, IArtiodactyla):
         num = random.randint(1, 10)
         if self.state == 'grazing':
             if num % 2 == 0:
-                print(f"{self.representative} successful escape from {predator.representative}.")
+                print(f"{self.representative} successfully escaped from {predator.representative}.")
                 self._change_state('grazing')
             else:
                 print(f"{self.representative} was caught by {predator.representative}.")
